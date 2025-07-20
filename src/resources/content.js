@@ -1,16 +1,16 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Emeenent",
+  lastName: "Ck",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Full Stack Developer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "emeenent14@gmail.com",
+  location: "Africa/Lagos", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Igbo"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -30,18 +30,24 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/Emeenent14",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/chukwuemeka-franklin-54a02334b/",
   },
   {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "X",
+    icon: "x", // or "twitter" if your icon set doesn't have "x"
+    link: "https://x.com/yourusername",
   },
+  {
+    name: "WhatsApp",
+    icon: "whatsapp",
+    link: "https://wa.me/2347069273822", // ✅ Replace with your phone number in intl format
+  },
+  
   {
     name: "Email",
     icon: "email",
@@ -58,13 +64,13 @@ const home = {
   headline: <>Building bridges between design and code</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: <>Recent project: <strong className="ml-4">SafeSwap</strong></>,
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Emeenent, a full stack developer, I dream JavaScript and i have 
+      <br /> React for breakfast. Into the night, I write Python + Django.
     </>
   ),
 };
@@ -90,9 +96,8 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Emeenent is a full stack developer with a passion for creating seamless user experiences, building
+        scalable applications, and exploring the latest technologies. 
       </>
     ),
   },
@@ -147,51 +152,113 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "University of Nigeria Nsukka",
+        description: <>Electronic and Computer Engineering (ECE).</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "YouTube High",
+        description: <>Studied Software Development</>,
+      },
+      {
+        name: "Alx Africa",
+        description: <>Python Course for babies</>,
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Languages & Technologies",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "Languages",
+        description: <>Able to create stunning user centered </>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
             alt: "Project image",
-            width: 16,
-            height: 9,
+            width: 3,
+            height: 3,
           },
           {
             src: "/images/projects/project-01/cover-03.jpg",
             alt: "Project image",
-            width: 16,
-            height: 9,
+            width: 3,
+            height: 3,
           },
         ],
       },
       {
-        title: "Next.js",
+        title: "Frontend",
         description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
             alt: "Project image",
-            width: 16,
-            height: 9,
+            width: 3,
+            height: 3,
           },
         ],
       },
+      {
+        title: "Backend",
+        description: <>Able to create stunning user centered </>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-02.jpg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/cover-03.jpg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+        ],
+      },
+      {
+        title: "Databases",
+        description: <>Able to create stunning user centered </>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-02.jpg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/cover-03.jpg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+        ],
+      },
+      {
+        title: "Tools & Deployment",
+        description: <>Able to create stunning user centered </>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-02.jpg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/cover-03.jpg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+        ],
+      },
+
     ],
   },
 };
