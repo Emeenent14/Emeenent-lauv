@@ -175,17 +175,36 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/HTML.svg",
             alt: "Project image",
             width: 3,
             height: 3,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/project-01/css.svg",
             alt: "Project image",
             width: 3,
             height: 3,
           },
+          {
+            src: "/images/projects/project-01/javascript.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/python.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/typescript.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          
         ],
       },
       {
@@ -194,7 +213,32 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/project-01/react.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/next.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+        
+          {
+            src: "/images/projects/project-01/redux.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/react-native.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/tailwind-css-2.svg",
             alt: "Project image",
             width: 3,
             height: 3,
@@ -207,13 +251,25 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/django.png",
             alt: "Project image",
             width: 3,
             height: 3,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/project-01/nodejs-icon.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/next.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/drf.png",
             alt: "Project image",
             width: 3,
             height: 3,
@@ -226,17 +282,24 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/sql.svg",
             alt: "Project image",
             width: 3,
             height: 3,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/project-01/poostgresql.png",
             alt: "Project image",
             width: 3,
             height: 3,
           },
+          {
+            src: "/images/projects/project-01/firebase.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+      
         ],
       },
       {
@@ -245,13 +308,25 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/github.svg",
             alt: "Project image",
             width: 3,
             height: 3,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/project-01/postman.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/visual-studio-code.svg",
+            alt: "Project image",
+            width: 3,
+            height: 3,
+          },
+          {
+            src: "/images/projects/project-01/css.svg",
             alt: "Project image",
             width: 3,
             height: 3,
