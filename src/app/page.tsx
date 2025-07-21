@@ -94,7 +94,7 @@ export default function Home() {
       blockSize={15}
       blockMargin={5}
       fontSize={16}
-      color="#4ade80" // Tailwind green-400 for example
+      //color="#4ade80" // Tailwind green-400 for example
       showTotalCount
       showWeekdayLabels
     />
