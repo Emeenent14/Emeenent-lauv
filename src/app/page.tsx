@@ -6,6 +6,8 @@ import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
+import GitHubCalendar from "react-github-calendar";
+
 export default function Home() {
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
@@ -82,6 +84,23 @@ export default function Home() {
           </Flex>
         </Flex>
       )}
+      <RevealFx translateY="16" delay={0.8}>
+  <Column maxWidth="m" paddingY="24" horizontal="center">
+    <Heading as="h2" variant="display-strong-xs" wrap="balance" paddingBottom="16">
+      I code every day
+    </Heading>
+    <GitHubCalendar
+      username="Emeenent14"
+      blockSize={15}
+      blockMargin={5}
+      fontSize={16}
+      color="#4ade80" // Tailwind green-400 for example
+      showTotalCount
+      showWeekdayLabels
+    />
+  </Column>
+</RevealFx>
+
       <Projects range={[2]} />
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
