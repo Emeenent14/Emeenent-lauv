@@ -15,11 +15,10 @@ const person = {
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
+  title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I write about web development and AI, sharing insights, tutorials, and the latest trends in the tech world.
     </>
   ),
 };
@@ -59,9 +58,9 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}&apos;s Portfolio`,
+  title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building the future of technology with code</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">SafeSwap</strong></>,
@@ -106,33 +105,26 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
+        company: "EMT Ng",
         timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        role: "Full Stack Developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Developed and maintained a scalable web application that serves over 10,000 users daily,
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Improved application performance by 30% through code optimization and refactoring.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
+        
         ],
       },
       {
-        company: "Creativ3",
+        company: "VVT Technologies",
         timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        role: "Frontend Developer",
         achievements: [
           <>
             Developed a design system that unified the brand across multiple platforms, improving
