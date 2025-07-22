@@ -94,10 +94,12 @@ export default function Home() {
       blockSize={15}
       blockMargin={5}
       fontSize={16}
-      //color="#4ade80" // Tailwind green-400 for example
-      showTotalCount
-      showWeekdayLabels
-    />
+      theme={{
+        light: ["#ebedf0", "#c6e48b", "#7bc96f", "#239a3b", "#196127"],
+        dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
+      }}
+/>
+
   </Column>
 </RevealFx>
 
