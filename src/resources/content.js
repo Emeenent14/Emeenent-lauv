@@ -15,7 +15,7 @@ const person = {
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
       I write about web development and AI, sharing insights, tutorials, and the latest trends in the tech world.
@@ -68,7 +68,7 @@ const home = {
   },
   subline: (
     <>
-      I'm Emeenent, a full stack developer, I dream JavaScript and i have 
+      I&apos;m Emeenent, a full stack developer, I dream JavaScript and i have 
       <br /> React for breakfast. Into the night, I write Python + Django.
     </>
   ),
