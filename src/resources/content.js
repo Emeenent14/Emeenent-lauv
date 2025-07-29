@@ -2,15 +2,15 @@ import { Logo } from "@once-ui-system/core";
 
 const person = {
   firstName: "Emeenent",
-  lastName: "Ck",
+  lastName: "(Chukwuemeka)",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Full Stack Developer",
   avatar: "/images/avatar.jpg",
   email: "emeenent14@gmail.com",
-  location: "Africa/Lagos", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Igbo"], // optional: Leave the array empty if you don't want to display languages
+  location: "Africa/Lagos", // IANA time zone format
+  languages: ["English", "Igbo"],
 };
 
 const newsletter = {
@@ -18,14 +18,12 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
-      I write about web development and AI, sharing insights, tutorials, and the latest trends in the tech world.
+      I write about web development, AI, and engineering insights—sharing deep dives, breakdowns, and forward-thinking tech trends.
     </>
   ),
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
@@ -38,15 +36,14 @@ const social = [
   },
   {
     name: "X",
-    icon: "x", // or "twitter" if your icon set doesn't have "x"
+    icon: "x",
     link: "https://x.com/yourusername",
   },
   {
     name: "WhatsApp",
     icon: "whatsapp",
-    link: "https://wa.me/2347069273822", // ✅ Replace with your phone number in intl format
+    link: "https://wa.me/2347069273822",
   },
-  
   {
     name: "Email",
     icon: "email",
@@ -60,7 +57,7 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building the future of technology with code</>,
+  headline: <>Building the future with code and bold ideas</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">SafeSwap</strong></>,
@@ -68,8 +65,8 @@ const home = {
   },
   subline: (
     <>
-      I&apos;m Emeenent, a full stack developer, I dream JavaScript and i have 
-      <br /> React for breakfast. Into the night, I write Python + Django.
+      I&apos;m Emeenent — a full stack dev engineering modern apps from front to back.  
+      <br /> React in the morning, Python at night. Coffee in between.
     </>
   ),
 };
@@ -78,7 +75,7 @@ const about = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} based in ${person.location}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -95,237 +92,110 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Emeenent is a full stack developer with a passion for creating seamless user experiences, building
-        scalable applications, and exploring the latest technologies. 
+        Emeenent is a full stack developer passionate about crafting seamless user experiences,
+        scalable systems, and pushing the edges of modern web and AI technologies.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
         company: "EMT Ng",
-        timeframe: "2022 - Present",
+        timeframe: "2022 – Present",
         role: "Full Stack Developer",
         achievements: [
-          <>
-            Developed and maintained a scalable web application that serves over 10,000 users daily,
-          </>,
-          <>
-            Improved application performance by 30% through code optimization and refactoring.
-          </>,
+          <>Built and maintained a scalable platform serving over 10,000 users daily.</>,
+          <>Increased backend performance by 30% through deep optimization and refactoring.</>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-        
-        ],
+        images: [],
       },
       {
         company: "VVT Technologies",
-        timeframe: "2018 - 2022",
+        timeframe: "2018 – 2022",
         role: "Frontend Developer",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Created a unified design system across products, boosting UI/UX consistency by 40%.</>,
+          <>Led cross-functional dev efforts, contributing to a 15% revenue uplift.</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
         name: "University of Nigeria Nsukka",
-        description: <>Electronic and Computer Engineering (ECE).</>,
+        description: <>B.Eng. in Electronic and Computer Engineering (ECE)</>,
       },
       {
         name: "YouTube High",
-        description: <>Studied Software Development</>,
+        description: <>Self-taught full stack development across modern stacks</>,
       },
       {
-        name: "Alx Africa",
-        description: <>Python Course for babies</>,
+        name: "ALX Africa",
+        description: <>Completed hands-on Python engineering track</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Languages & Technologies",
     skills: [
       {
         title: "Languages",
-        description: <>Able to create stunning user centered </>,
-        // optional: leave the array empty if you don't want to display images
+        description: <>Proficient in full stack development with strong frontend-backend fluency</>,
         images: [
-          {
-            src: "/images/projects/project-01/HTML.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/css.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/javascript.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/python.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/typescript.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          
+          { src: "/images/projects/project-01/HTML.svg", alt: "HTML" },
+          { src: "/images/projects/project-01/css.svg", alt: "CSS" },
+          { src: "/images/projects/project-01/javascript.svg", alt: "JavaScript" },
+          { src: "/images/projects/project-01/python.svg", alt: "Python" },
+          { src: "/images/projects/project-01/typescript.svg", alt: "TypeScript" },
         ],
       },
       {
         title: "Frontend",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
+        description: <>Building rich, reactive UIs with React,Next.js,Tailwind, Once UI, and modern tools</>,
         images: [
-          {
-            src: "/images/projects/project-01/react.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/next.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-        
-          {
-            src: "/images/projects/project-01/redux.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/react-native.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/tailwind-css-2.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
+          { src: "/images/projects/project-01/react.svg", alt: "React" },
+          { src: "/images/projects/project-01/next.svg", alt: "Next.js" },
+          { src: "/images/projects/project-01/redux.svg", alt: "Redux" },
+          { src: "/images/projects/project-01/react-native.svg", alt: "React Native" },
+          { src: "/images/projects/project-01/tailwind-css-2.svg", alt: "Tailwind CSS" },
         ],
       },
       {
         title: "Backend",
-        description: <>Able to create stunning user centered </>,
-        // optional: leave the array empty if you don't want to display images
+        description: <>Efficient APIs and systems built with Django, DRF, and Node.js</>,
         images: [
-          {
-            src: "/images/projects/project-01/django.png",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/nodejs-icon.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/next.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/drf.png",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
+          { src: "/images/projects/project-01/django.png", alt: "Django" },
+          { src: "/images/projects/project-01/nodejs-icon.svg", alt: "Node.js" },
+          { src: "/images/projects/project-01/next.svg", alt: "Next.js" },
+          { src: "/images/projects/project-01/drf.png", alt: "DRF" },
         ],
       },
       {
         title: "Databases",
-        description: <>Able to create stunning user centered </>,
-        // optional: leave the array empty if you don't want to display images
+        description: <>Structured and scalable data modeling with SQL and NoSQL tools</>,
         images: [
-          {
-            src: "/images/projects/project-01/sql.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/poostgresql.png",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/firebase.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-      
+          { src: "/images/projects/project-01/sql.svg", alt: "SQL" },
+          { src: "/images/projects/project-01/poostgresql.png", alt: "PostgreSQL" },
+          { src: "/images/projects/project-01/firebase.svg", alt: "Firebase" },
         ],
       },
       {
         title: "Tools & Deployment",
-        description: <>Able to create stunning user centered </>,
-        // optional: leave the array empty if you don't want to display images
+        description: <>Version control, testing, and smooth deployment pipelines</>,
         images: [
-          {
-            src: "/images/projects/project-01/github.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/postman.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/visual-studio-code.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
-          {
-            src: "/images/projects/project-01/css.svg",
-            alt: "Project image",
-            width: 3,
-            height: 3,
-          },
+          { src: "/images/projects/project-01/github.svg", alt: "GitHub" },
+          { src: "/images/projects/project-01/postman.svg", alt: "Postman" },
+          { src: "/images/projects/project-01/visual-studio-code.svg", alt: "VS Code" },
+          { src: "/images/projects/project-01/css.svg", alt: "CSS" },
         ],
       },
-
     ],
   },
 };
@@ -334,27 +204,21 @@ const blog = {
   path: "/blog",
   label: "Blog",
   title: "Writing about Code, AI, and the Future",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  description: `Thoughts, breakdowns, and deep dives by ${person.name}`,
 };
 
 const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Full Stack & AI Projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `A showcase of full stack and AI-driven projects by ${person.name}`,
 };
 
 const gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  title: `Photo Gallery – ${person.name}`,
+  description: `A visual collection of moments and projects by ${person.name}`,
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
