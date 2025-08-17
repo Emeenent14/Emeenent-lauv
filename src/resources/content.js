@@ -38,7 +38,7 @@ const social = [
   {
     name: "X",
     icon: "x",
-    link: "https://x.com/yourusername",
+    link: "https://x.com/Emeenent14",
   },
   {
     name: "WhatsApp",
