@@ -74,6 +74,70 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
   );
 }
 
+interface VideoProps {
+  src: string;
+  alt?: string;
+  poster?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+  width?: string | number;
+  height?: string | number;
+}
+
+function Video({ 
+  src, 
+  alt = "Video content", 
+  poster, 
+  autoPlay = false, 
+  loop = false, 
+  muted = true, 
+  controls = true,
+  width = "100%",
+  height = "auto",
+  ...props 
+}: VideoProps) {
+  if (!src) {
+    console.error("Video requires a valid 'src' property.");
+    return null;
+  }
+
+  return (
+    <div
+      style={{
+        marginTop: "8px",
+        marginBottom: "16px",
+        borderRadius: "12px",
+        overflow: "hidden",
+        border: "1px solid var(--neutral-alpha-medium)",
+        width: "100%",
+      }}
+    >
+      <video
+        src={src}
+        poster={poster}
+        autoPlay={autoPlay}
+        loop={loop}
+        muted={muted}
+        controls={controls}
+        width={width}
+        height={height}
+        style={{
+          width: "100%",
+          height: "auto",
+          display: "block",
+        }}
+        {...props}
+      >
+        <Text variant="body-default-s" onBackground="neutral-weak">
+          Your browser does not support the video tag. {alt}
+        </Text>
+      </video>
+    </div>
+  );
+}
+
 function slugify(str: string): string {
   return str
     .toLowerCase()
@@ -163,6 +227,7 @@ const components = {
   a: CustomLink as any,
   code: createInlineCode as any,
   pre: createCodeBlock as any,
+  Video,
   Heading,
   Text,
   CodeBlock,
