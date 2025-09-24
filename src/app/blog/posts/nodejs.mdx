@@ -1,0 +1,32 @@
+---
+title: "Building a REST API with Node.js in 10 Minutes"
+summary: "A minimal guide to spinning up a Node.js API using Express."
+publishedAt: "2025-04-12"
+tag: "Node.js"
+---
+
+## Install Dependencies
+```bash
+npm init -y
+npm install express
+
+<CodeBlock
+codes={[
+{
+code:
+`const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => res.send('Hello API'));
+app.listen(3000, () => console.log('Server running'));`,
+language: "js",
+label: "server.js"
+}
+]}
+/>
+
+<Feedback
+icon
+marginBottom="16"
+description={<>Boom. Your API is live at <InlineCode>localhost:3000</InlineCode>. Now go add routes like a pro.</>}
+/>

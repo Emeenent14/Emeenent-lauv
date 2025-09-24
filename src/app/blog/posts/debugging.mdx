@@ -1,0 +1,19 @@
+---
+title: "The Bug That Made Me Want to Quit (and How I Fixed It)"
+summary: "Debugging an infinite render loop in React."
+publishedAt: "2025-04-15"
+tag: "Debugging"
+---
+
+## The Problem
+Component kept re-rendering like it had ADHD. Turns out I was updating state in `useEffect` without a condition.
+
+## The Fix
+Check before updating state:
+```tsx
+useEffect(() => {
+  if(data && !loaded) setLoaded(true);
+}, [data, loaded]);
+<Feedback
+description={<>Lesson: Sometimes, the enemy is your own logic. 🥲</>}
+/>

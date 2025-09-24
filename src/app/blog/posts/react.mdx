@@ -1,0 +1,37 @@
+---
+title: "React useEffect: Why It’s Confusing and How to Master It"
+summary: "Breaking down useEffect, dependency arrays, and the common mistakes devs make."
+publishedAt: "2025-04-10"
+tag: "React"
+---
+
+## Why useEffect exists
+React’s rendering is pure — it shouldn’t run side effects in the middle of rendering. `useEffect` is the safe space for that.
+
+## The Dependency Trap
+Your effect re-runs when dependencies change. Forgetting them = stale data. Adding everything blindly = infinite loops.
+
+## Fixing It
+- Always include dependencies you use inside the effect.
+- If you can, use memoized callbacks (`useCallback`) to avoid re-renders.
+
+<Feedback
+    icon
+    marginBottom="16"
+    description={<>Think of <InlineCode>useEffect</InlineCode> as a cleanup crew: runs after render, not during.</>}
+/>
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+      {
+        code:
+`useEffect(() => {
+  const timer = setInterval(() => console.log('tick'), 1000);
+  return () => clearInterval(timer);
+}, []);`,
+        language: "tsx",
+        label: "src/hooks/useEffect.tsx"
+      }
+    ]}
+/>
