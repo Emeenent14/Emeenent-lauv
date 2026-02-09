@@ -1,0 +1,222 @@
+---
+title: "NestJS: Why I Switched from Express for Production APIs"
+summary: "After years with Express, I tried NestJS. Here's why its structure, dependency injection, and TypeScript-first approach won me over for complex APIs."
+image: "/images/og/home.jpg"
+publishedAt: "2025-11-12"
+tag: "Backend"
+---
+
+## The Express Problem
+
+Express is great for small projects. But as APIs grow, it becomes a mess:
+
+```javascript
+// Typical Express chaos
+app.get('/users/:id', authMiddleware, validateUser, async (req, res) => {
+  try {
+    const user = await UserService.findById(req.params.id);
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+```
+
+No structure. No consistency. Every developer does it differently.
+
+---
+
+## NestJS: Structure by Default
+
+NestJS brings Angular's architecture to backend development. Everything has a place:
+
+```typescript
+// users.controller.ts
+@Controller('users')
+export class UsersController {
+  constructor(private readonly usersService: UsersService) {}
+
+  @Get(':id')
+  @UseGuards(AuthGuard)
+  async findOne(@Param('id') id: string): Promise<User> {
+    return this.usersService.findById(id);
+  }
+}
+```
+
+Clean. Decorators describe intent. TypeScript ensures type safety.
+
+---
+
+## The Module System
+
+NestJS organizes code into modules:
+
+```typescript
+// users.module.ts
+@Module({
+  controllers: [UsersController],
+  providers: [UsersService, UsersRepository],
+  imports: [DatabaseModule],
+  exports: [UsersService],
+})
+export class UsersModule {}
+```
+
+Each module is self-contained. Import what you need, export what others need.
+
+---
+
+## Dependency Injection
+
+This is where NestJS shines. No more manual wiring:
+
+```typescript
+// users.service.ts
+@Injectable()
+export class UsersService {
+  constructor(
+    private readonly usersRepo: UsersRepository,
+    private readonly emailService: EmailService,
+    private readonly cacheService: CacheService,
+  ) {}
+
+  async createUser(dto: CreateUserDto): Promise<User> {
+    const user = await this.usersRepo.create(dto);
+    await this.emailService.sendWelcome(user.email);
+    await this.cacheService.invalidate('users:list');
+    return user;
+  }
+}
+```
+
+NestJS injects dependencies automatically. Testing becomes trivial—just mock the injections.
+
+---
+
+## Guards, Pipes, and Interceptors
+
+NestJS has a powerful middleware pipeline:
+
+### Guards (Authentication/Authorization)
+
+```typescript
+@Injectable()
+export class RolesGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean {
+    const request = context.switchToHttp().getRequest();
+    const user = request.user;
+    return user.roles.includes('admin');
+  }
+}
+```
+
+### Pipes (Validation/Transformation)
+
+```typescript
+@Post()
+async create(@Body(ValidationPipe) dto: CreateUserDto) {
+  // dto is already validated
+}
+```
+
+### Interceptors (Logging/Transformation)
+
+```typescript
+@Injectable()
+export class LoggingInterceptor implements NestInterceptor {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    const now = Date.now();
+    return next.handle().pipe(
+      tap(() => console.log(`Request took ${Date.now() - now}ms`)),
+    );
+  }
+}
+```
+
+---
+
+## Real-World Patterns
+
+### DTOs with Class-Validator
+
+```typescript
+export class CreateTransactionDto {
+  @IsNumber()
+  @Min(100)
+  amount: number;
+
+  @IsString()
+  @IsNotEmpty()
+  description: string;
+
+  @IsUUID()
+  sellerId: string;
+}
+```
+
+Validation happens automatically. Invalid requests never reach your handlers.
+
+### Repository Pattern
+
+```typescript
+@Injectable()
+export class UsersRepository {
+  constructor(
+    @InjectRepository(User)
+    private readonly repo: Repository<User>,
+  ) {}
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.repo.findOne({ where: { email } });
+  }
+}
+```
+
+Database logic isolated from business logic.
+
+---
+
+## When to Use Express vs NestJS
+
+| Scenario | Express | NestJS |
+|----------|---------|--------|
+| Quick prototype | ✅ | ❌ |
+| Large team | ❌ | ✅ |
+| Complex business logic | ❌ | ✅ |
+| Microservices | ❌ | ✅ |
+| Learning curve matters | ✅ | ❌ |
+
+---
+
+## My NestJS Project Setup
+
+```bash
+# Create new project
+nest new my-api
+
+# Generate resources
+nest g resource users
+nest g resource transactions
+
+# Add common dependencies
+npm i @nestjs/config @nestjs/typeorm class-validator class-transformer
+```
+
+NestJS CLI generates boilerplate so you can focus on business logic.
+
+---
+
+## Key Takeaways
+
+1. **Structure scales** – NestJS forces good architecture
+2. **DI is powerful** – Makes testing and refactoring easy
+3. **TypeScript-first** – Full type safety end-to-end
+4. **Batteries included** – WebSockets, GraphQL, microservices built-in
+5. **Learning curve pays off** – Initial investment, long-term gains
+
+If you're building anything beyond a simple CRUD API, give NestJS a try. The structure will save you headaches later.
+
+---
+
+*Building something with NestJS? Let's connect on [LinkedIn](https://www.linkedin.com/in/chukwuemeka-franklin-54a02334b/).*

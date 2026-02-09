@@ -1,0 +1,160 @@
+---
+title: "Building Scalable REST APIs with Django REST Framework"
+summary: "A practical guide to structuring Django APIs for production—covering authentication, serializers, viewsets, and best practices I've learned building fintech applications."
+image: "/images/og/home.jpg"
+publishedAt: "2025-08-15"
+tag: "Backend"
+---
+
+## Why Django REST Framework?
+
+After building multiple production APIs with Django REST Framework (DRF), I can confidently say it's one of the most developer-friendly tools for creating robust APIs. Unlike Express or Flask, DRF gives you **batteries included**—authentication, serialization, pagination, and throttling out of the box.
+
+In this post, I'll share patterns that have served me well across projects like **LeaseLog** (property management) and **SafeSwap** (fintech escrow).
+
+---
+
+## Project Structure That Scales
+
+Here's how I structure Django projects for maintainability:
+
+```
+project/
+├── apps/
+│   ├── authentication/
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── models.py
+│   ├── core/
+│   │   ├── permissions.py
+│   │   └── pagination.py
+│   └── transactions/
+├── config/
+│   ├── settings/
+│   │   ├── base.py
+│   │   ├── development.py
+│   │   └── production.py
+│   └── urls.py
+└── manage.py
+```
+
+**Key principles:**
+- Separate settings for each environment
+- Shared utilities in a `core` app
+- Each app is self-contained with its own URLs
+
+---
+
+## Authentication Done Right
+
+For most projects, I use **JWT authentication** with `djangorestframework-simplejwt`:
+
+```python
+# settings.py
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+}
+```
+
+**Pro tip:** Always rotate refresh tokens and set reasonable expiry times. For fintech apps, I use shorter access tokens (15-30 mins) for security.
+
+---
+
+## Serializer Patterns
+
+### Separate Read/Write Serializers
+
+```python
+class TransactionReadSerializer(serializers.ModelSerializer):
+    buyer = UserSerializer(read_only=True)
+    seller = UserSerializer(read_only=True)
+    
+    class Meta:
+        model = Transaction
+        fields = '__all__'
+
+class TransactionWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = ['amount', 'description', 'seller_id']
+    
+    def create(self, validated_data):
+        validated_data['buyer'] = self.context['request'].user
+        return super().create(validated_data)
+```
+
+This pattern keeps your API responses rich while keeping write payloads simple.
+
+---
+
+## ViewSets with Custom Actions
+
+```python
+class TransactionViewSet(viewsets.ModelViewSet):
+    queryset = Transaction.objects.all()
+    permission_classes = [IsAuthenticated, IsTransactionParticipant]
+    
+    def get_serializer_class(self):
+        if self.action in ['create', 'update']:
+            return TransactionWriteSerializer
+        return TransactionReadSerializer
+    
+    @action(detail=True, methods=['post'])
+    def release_funds(self, request, pk=None):
+        transaction = self.get_object()
+        transaction.release()
+        return Response({'status': 'funds released'})
+```
+
+---
+
+## Error Handling
+
+Consistent error responses make API integration easier:
+
+```python
+# core/exceptions.py
+from rest_framework.views import exception_handler
+
+def custom_exception_handler(exc, context):
+    response = exception_handler(exc, context)
+    
+    if response is not None:
+        response.data = {
+            'success': False,
+            'error': {
+                'code': response.status_code,
+                'message': response.data
+            }
+        }
+    
+    return response
+```
+
+---
+
+## Key Takeaways
+
+1. **Structure matters** – Separate apps by domain, not by type
+2. **JWT for stateless auth** – But rotate tokens and set appropriate expiry
+3. **Read/Write serializers** – Different needs for input vs output
+4. **Custom actions** – Keep related operations in the same viewset
+5. **Consistent errors** – Your API consumers will thank you
+
+Building APIs is about making the right trade-offs. DRF gives you the flexibility to do it well.
+
+---
+
+*Have questions? Reach out on [Twitter](https://x.com/Emeenent14) or [LinkedIn](https://www.linkedin.com/in/chukwuemeka-franklin-54a02334b/).*

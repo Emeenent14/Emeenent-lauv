@@ -1,0 +1,200 @@
+---
+title: "Docker for Full Stack Developers: From Dev to Production"
+summary: "Everything I wish I knew about Docker when I started—containerizing Django, React, and Postgres apps with docker-compose for seamless deployment."
+image: "/images/og/home.jpg"
+publishedAt: "2025-09-01"
+tag: "DevOps"
+---
+
+## Why Docker Changed My Workflow
+
+Before Docker, deploying apps was a nightmare. "It works on my machine" was a weekly occurrence. Docker fixed that by packaging everything—code, dependencies, environment—into portable containers.
+
+I've used Docker extensively in projects like **Conduit** (automation platform) and **OH-Res** (e-tax filing). Here's what I've learned.
+
+---
+
+## The Basics: Dockerfile
+
+A Dockerfile is a recipe for your container. Here's one for a Django app:
+
+```dockerfile
+# Dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies first (for caching)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Run migrations and start server
+CMD ["sh", "-c", "python manage.py migrate && gunicorn config.wsgi:application -b 0.0.0.0:8000"]
+```
+
+**Key insight:** Copy `requirements.txt` first. Docker caches layers, so dependencies won't reinstall unless requirements change.
+
+---
+
+## Docker Compose: Multi-Container Apps
+
+Most real apps need multiple services. Here's a typical full-stack setup:
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://postgres:${DB_PASSWORD}@db:5432/myapp
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+```
+
+---
+
+## Development vs Production
+
+### Development Docker Compose
+
+```yaml
+# docker-compose.dev.yml
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/app  # Hot reload
+    command: python manage.py runserver 0.0.0.0:8000
+```
+
+### Production Considerations
+
+1. **Multi-stage builds** – Smaller images
+2. **No volume mounts** – Code baked into image
+3. **Health checks** – Ensure containers are ready
+4. **Non-root user** – Security best practice
+
+```dockerfile
+# Multi-stage production Dockerfile
+FROM python:3.11-slim as builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
+
+FROM python:3.11-slim
+RUN useradd -m appuser
+WORKDIR /app
+COPY --from=builder /wheels /wheels
+RUN pip install --no-cache /wheels/*
+COPY . .
+USER appuser
+CMD ["gunicorn", "config.wsgi:application", "-b", "0.0.0.0:8000"]
+```
+
+---
+
+## Common Gotchas
+
+### 1. Database Connection Timing
+
+Your app might start before Postgres is ready. Use a wait script:
+
+```bash
+#!/bin/bash
+# wait-for-db.sh
+until pg_isready -h db -U postgres; do
+  echo "Waiting for database..."
+  sleep 2
+done
+exec "$@"
+```
+
+### 2. Environment Variables
+
+Never hardcode secrets. Use `.env` files:
+
+```bash
+# .env
+DB_PASSWORD=supersecret
+SECRET_KEY=django-insecure-change-me
+```
+
+### 3. Volume Permissions
+
+If you get permission errors, match container user ID with host:
+
+```yaml
+services:
+  backend:
+    user: "${UID}:${GID}"
+```
+
+---
+
+## My Go-To Commands
+
+```bash
+# Build and start
+docker-compose up --build
+
+# Run in background
+docker-compose up -d
+
+# View logs
+docker-compose logs -f backend
+
+# Execute command in container
+docker-compose exec backend python manage.py createsuperuser
+
+# Clean everything
+docker-compose down -v --rmi all
+```
+
+---
+
+## Key Takeaways
+
+1. **Dockerfile layer caching** – Order matters
+2. **Docker Compose for orchestration** – Define your entire stack
+3. **Separate dev and prod configs** – Different needs
+4. **Multi-stage builds** – Smaller, secure images
+5. **Handle startup order** – Wait for dependencies
+
+Docker isn't just a deployment tool—it's a development multiplier. Once you go containerized, you won't go back.
+
+---
+
+*Questions? Find me on [GitHub](https://github.com/Emeenent14) or [Twitter](https://x.com/Emeenent14).*

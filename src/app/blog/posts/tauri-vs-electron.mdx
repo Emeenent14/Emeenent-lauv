@@ -1,0 +1,212 @@
+---
+title: "Tauri vs Electron: Why I Chose Rust for Desktop Apps"
+summary: "After building Relay with Tauri, here's my honest comparison—bundle sizes, performance, security, and when to choose each framework."
+image: "/images/og/home.jpg"
+publishedAt: "2025-10-05"
+tag: "Rust"
+---
+
+## The Problem with Electron
+
+Electron powers apps like VS Code, Slack, and Discord. It's proven and stable. But it has a dirty secret: **every Electron app ships its own Chromium browser**.
+
+That means:
+- **150MB+ bundle sizes** for a simple app
+- **High memory usage** (often 200MB+ idle)
+- **Slower startup times**
+
+When I started building **Relay** (an MCP server management tool), I needed something lighter.
+
+---
+
+## Enter Tauri
+
+Tauri is a Rust-based alternative that uses the OS's native webview instead of bundling Chromium. The results are dramatic:
+
+| Metric | Electron | Tauri |
+|--------|----------|-------|
+| Bundle Size | 150-200MB | 5-15MB |
+| Memory (idle) | 200-400MB | 30-80MB |
+| Startup Time | 2-5 seconds | <1 second |
+
+For Relay, my final binary was **12MB**. The equivalent Electron app would be 150MB+.
+
+---
+
+## Architecture Comparison
+
+### Electron
+
+```
+┌─────────────────────────────────┐
+│         Node.js Main            │
+│  (Full Node runtime + Chromium) │
+├─────────────────────────────────┤
+│        Renderer (React)         │
+│       (Another Chromium)        │
+└─────────────────────────────────┘
+```
+
+### Tauri
+
+```
+┌─────────────────────────────────┐
+│         Rust Backend            │
+│    (Native, no runtime)         │
+├─────────────────────────────────┤
+│        WebView (React)          │
+│     (OS native: WebKit/Edge)    │
+└─────────────────────────────────┘
+```
+
+Tauri's Rust backend compiles to native code—no V8, no garbage collection overhead.
+
+---
+
+## My Tauri Setup for Relay
+
+### Project Structure
+
+```
+relay/
+├── src/              # React frontend
+├── src-tauri/
+│   ├── src/
+│   │   ├── main.rs   # Entry point
+│   │   ├── db.rs     # SQLite operations
+│   │   └── ipc.rs    # Frontend communication
+│   ├── Cargo.toml
+│   └── tauri.conf.json
+```
+
+### IPC Communication
+
+Tauri's command system is elegant:
+
+```rust
+// src-tauri/src/ipc.rs
+#[tauri::command]
+fn get_servers(state: State<DbPool>) -> Result<Vec<Server>, String> {
+    let conn = state.get().map_err(|e| e.to_string())?;
+    db::get_all_servers(&conn).map_err(|e| e.to_string())
+}
+
+// Register in main.rs
+fn main() {
+    tauri::Builder::default()
+        .invoke_handler(tauri::generate_handler![get_servers])
+        .run(tauri::generate_context!())
+        .expect("error while running application");
+}
+```
+
+```typescript
+// Frontend (React)
+import { invoke } from '@tauri-apps/api';
+
+const servers = await invoke<Server[]>('get_servers');
+```
+
+Type-safe, fast, and secure.
+
+---
+
+## The Security Advantage
+
+Electron apps expose Node.js APIs to the renderer. One XSS vulnerability = full system access.
+
+Tauri's approach:
+- **Whitelist commands** – Only exposed functions are accessible
+- **No Node in webview** – JavaScript can't access filesystem directly
+- **CSP by default** – Content Security Policy built-in
+
+```json
+// tauri.conf.json
+{
+  "tauri": {
+    "allowlist": {
+      "fs": {
+        "readFile": true,
+        "writeFile": true,
+        "scope": ["$APPDATA/*"]  // Restricted paths
+      }
+    }
+  }
+}
+```
+
+---
+
+## When to Still Use Electron
+
+Electron isn't dead. Choose it when:
+
+1. **You need Node.js libraries** – Some npm packages don't have Rust equivalents
+2. **Team knows JavaScript only** – Rust has a learning curve
+3. **Cross-platform consistency** – Tauri's webview varies by OS
+4. **Mature ecosystem** – Electron's tooling is more established
+
+---
+
+## Building Relay: Real Challenges
+
+### 1. SQLite in Rust
+
+Using `rusqlite` was straightforward:
+
+```rust
+pub fn init_db() -> Result<Connection> {
+    let conn = Connection::open("relay.db")?;
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS servers (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            host TEXT NOT NULL,
+            port INTEGER NOT NULL
+        )",
+        [],
+    )?;
+    Ok(conn)
+}
+```
+
+### 2. State Management
+
+Tauri's state system handles shared resources:
+
+```rust
+fn main() {
+    let pool = init_db_pool().expect("Failed to create pool");
+    
+    tauri::Builder::default()
+        .manage(pool)  // Available in all commands
+        .run(tauri::generate_context!())
+        .unwrap();
+}
+```
+
+---
+
+## Performance in Practice
+
+Relay's performance on a mid-range laptop:
+- **Cold start:** 400ms
+- **Memory usage:** 45MB
+- **CPU idle:** <1%
+
+Try getting those numbers with Electron.
+
+---
+
+## Key Takeaways
+
+1. **Tauri for new projects** – If you can learn Rust, the benefits are massive
+2. **Electron for complex apps** – When you need the Node ecosystem
+3. **Security matters** – Tauri's model is fundamentally safer
+4. **Performance is free** – Rust's zero-cost abstractions shine
+
+The desktop app landscape is changing. Tauri proves you don't need to ship a browser with every app.
+
+---
+
+*Check out [Relay on GitHub](https://github.com/Emeenent14/relay) to see these patterns in action.*
