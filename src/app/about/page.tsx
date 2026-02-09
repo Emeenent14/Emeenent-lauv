@@ -16,6 +16,8 @@ import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
+import { GitHubActivity } from "@/components/GitHubActivity";
+import { ContactForm } from "@/components/ContactForm";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -153,26 +155,26 @@ export default function About() {
                 {social.map(
                   (item) =>
                     item.link && (
-                        <React.Fragment key={item.name}>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                weight="default"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </React.Fragment>
+                      <React.Fragment key={item.name}>
+                        <Button
+                          className="s-flex-hide"
+                          key={item.name}
+                          href={item.link}
+                          prefixIcon={item.icon}
+                          label={item.name}
+                          size="s"
+                          weight="default"
+                          variant="secondary"
+                        />
+                        <IconButton
+                          className="s-flex-show"
+                          size="l"
+                          key={`${item.name}-icon`}
+                          href={item.link}
+                          icon={item.icon}
+                          variant="secondary"
+                        />
+                      </React.Fragment>
                     ),
                 )}
               </Flex>
@@ -315,6 +317,19 @@ export default function About() {
               </Column>
             </>
           )}
+
+          {/* GitHub Activity */}
+          <Column fillWidth marginTop="xl" marginBottom="xl">
+            <GitHubActivity username="Emeenent14" />
+          </Column>
+
+          {/* Contact Form */}
+          <Column fillWidth marginTop="xl">
+            <Heading as="h2" variant="display-strong-s" marginBottom="m">
+              Get in Touch
+            </Heading>
+            <ContactForm formspreeId="YOUR_FORMSPREE_ID" />
+          </Column>
         </Column>
       </Flex>
     </Column>

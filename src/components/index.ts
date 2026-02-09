@@ -8,3 +8,7 @@ export { Providers } from "@/components/Providers";
 export { ScrollToHash } from "@/components/ScrollToHash";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
+export { GitHubActivity } from "@/components/GitHubActivity";
+export { ContactForm } from "@/components/ContactForm";
+export { SpotifyNowPlaying } from "@/components/SpotifyNowPlaying";
+export { TerminalPortfolio, useTerminalShortcut } from "@/components/TerminalPortfolio";

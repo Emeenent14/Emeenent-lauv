@@ -3,6 +3,19 @@
 import { BorderStyle, ChartMode, ChartVariant, DataThemeProvider, IconProvider, NeutralColor, ScalingSize, Schemes, SolidStyle, SolidType, SurfaceStyle, ThemeProvider, ToastProvider, TransitionStyle } from "@once-ui-system/core";
 import { style, dataStyle } from "../resources";
 import { iconLibrary } from "../resources/icons";
+import { Analytics } from "@vercel/analytics/next";
+import { TerminalPortfolio, useTerminalShortcut } from "./TerminalPortfolio";
+
+function TerminalWrapper({ children }: { children: React.ReactNode }) {
+  const { isOpen, setIsOpen } = useTerminalShortcut();
+
+  return (
+    <>
+      {children}
+      {isOpen && <TerminalPortfolio onClose={() => setIsOpen(false)} />}
+    </>
+  );
+}
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -29,10 +42,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
           fontSize: dataStyle.tick.fontSize,
           line: dataStyle.tick.line
         }}
-        >
+      >
         <ToastProvider>
           <IconProvider icons={iconLibrary}>
-            {children}
+            <TerminalWrapper>
+              {children}
+            </TerminalWrapper>
+            <Analytics />
           </IconProvider>
         </ToastProvider>
       </DataThemeProvider>
