@@ -9,6 +9,7 @@ const routes = {
   "/work": true,
   "/blog": true,
   "/gallery": true,
+  "/resume": true,
 };
 
 const display = {
@@ -171,20 +172,42 @@ const mailchimp = {
   }
 };
 
-// default schema data
+// default schema data - Person schema for SEO
 const schema = {
-  logo: "",
-  type: "Organization",
-  name: "Once UI",
+  logo: "/images/avatar.jpg",
+  type: "Person",
+  name: "Franklin Oguejiofor",
+  alternateName: [
+    "Emeenent",
+    "Franklin O.",
+    "Chukwuemeka Oguejiofor",
+    "Chukwuemeka (Franklin) Oguejiofor",
+    "Emeenent14",
+    "Franklin Chukwuemeka Oguejiofor"
+  ],
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "foguejiofor14@gmail.com",
+  jobTitle: "Full Stack Developer",
+  url: "https://emeenent-lauv-m.vercel.app",
+  knowsAbout: [
+    "Full Stack Development",
+    "Backend Engineering",
+    "React",
+    "Next.js",
+    "Django",
+    "NestJS",
+    "DevOps",
+    "Cloud Infrastructure",
+    "TypeScript",
+    "Python"
+  ]
 };
 
-// social links
+// social links for schema.org sameAs property
 const sameAs = {
-  threads: "#",
-  linkedin: "#",
-  discord: "#",
+  github: "https://github.com/Emeenent14",
+  linkedin: "https://www.linkedin.com/in/chukwuemeka-franklin-54a02334b/",
+  x: "https://x.com/Emeenent14",
 };
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };

@@ -9,13 +9,19 @@ import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
+  return {
+    ...Meta.generate({
+      title: home.title,
+      description: home.description,
+      baseURL: baseURL,
+      path: home.path,
+      image: home.image,
+    }),
+    keywords: home.keywords,
+    authors: [{ name: "Franklin Oguejiofor", url: "https://emeenent-lauv-m.vercel.app" }],
+    creator: "Franklin Oguejiofor",
+    publisher: "Franklin Oguejiofor",
+  };
 }
 
 export default async function RootLayout({
@@ -48,17 +54,17 @@ export default async function RootLayout({
                   
                   // Set defaults from config
                   const config = ${JSON.stringify({
-                    brand: style.brand,
-                    accent: style.accent,
-                    neutral: style.neutral,
-                    solid: style.solid,
-                    'solid-style': style.solidStyle,
-                    border: style.border,
-                    surface: style.surface,
-                    transition: style.transition,
-                    scaling: style.scaling,
-                    'viz-style': dataStyle.variant,
-                  })};
+              brand: style.brand,
+              accent: style.accent,
+              neutral: style.neutral,
+              solid: style.solid,
+              'solid-style': style.solidStyle,
+              border: style.border,
+              surface: style.surface,
+              transition: style.transition,
+              scaling: style.scaling,
+              'viz-style': dataStyle.variant,
+            })};
                   
                   // Apply default values
                   Object.entries(config).forEach(([key, value]) => {
@@ -96,7 +102,7 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+        <Column as="body" background="page" fillWidth style={{ minHeight: "100vh" }} margin="0" padding="0" horizontal="center">
           <Background
             position="fixed"
             mask={{
@@ -138,24 +144,24 @@ export default async function RootLayout({
               color: effects.lines.color,
             }}
           />
-          <Flex fillWidth minHeight="16" hide="s"/>
-            <Header />
-            <Flex
-              zIndex={0}
-              fillWidth
-              padding="l"
-              horizontal="center"
-              flex={1}
-            >
-              <Flex horizontal="center" fillWidth minHeight="0">
-                <RouteGuard>
-                  {children}
-                </RouteGuard>
-              </Flex>
+          <Flex fillWidth minHeight="16" hide="s" />
+          <Header />
+          <Flex
+            zIndex={0}
+            fillWidth
+            padding="l"
+            horizontal="center"
+            flex={1}
+          >
+            <Flex horizontal="center" fillWidth minHeight="0">
+              <RouteGuard>
+                {children}
+              </RouteGuard>
             </Flex>
-            <Footer/>
-          </Column>
-        </Providers>
-      </Flex>
+          </Flex>
+          <Footer />
+        </Column>
+      </Providers>
+    </Flex>
   );
 }

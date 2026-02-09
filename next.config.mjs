@@ -13,6 +13,14 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+      },
+    ],
+  },
 };
 
 export default withMDX(nextConfig);

@@ -7,7 +7,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Backend-focused Full Stack Developer",
+  role: "Full Stack Developer",
   avatar: "/images/avatar.jpg",
   email: "foguejiofor14@gmail.com",
   location: "Africa/Lagos", // IANA time zone format
@@ -19,7 +19,7 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
-      I write about backend engineering, DevOps, cloud infrastructure, and building production systems—sharing deep dives and real-world engineering insights.
+      I write about full stack development, DevOps, and building production systems—sharing deep dives and real-world engineering insights.
     </>
   ),
 };
@@ -61,9 +61,25 @@ const home = {
   path: "/",
   image: "/images/og/og-image.jpg?v=2",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Shipping production systems from backend to cloud</>,
+  title: `Franklin Oguejiofor (Emeenent) | Full Stack Developer`,
+  description: `Portfolio of Franklin Oguejiofor (Emeenent, Chukwuemeka Oguejiofor) - Full Stack Developer specializing in React, Next.js, Django, NestJS, and DevOps. Building production-grade fintech, SaaS, and automation systems.`,
+  keywords: [
+    "Franklin Oguejiofor",
+    "Emeenent",
+    "Emeenent14",
+    "Franklin O.",
+    "Chukwuemeka Oguejiofor",
+    "Chukwuemeka Franklin Oguejiofor",
+    "Full Stack Developer",
+    "Backend Developer",
+    "React Developer",
+    "Django Developer",
+    "NestJS Developer",
+    "DevOps Engineer",
+    "Nigerian Developer",
+    "Software Engineer"
+  ],
+  headline: <>Building end-to-end systems that just work</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">E-Tax Platform</strong></>,
@@ -71,8 +87,8 @@ const home = {
   },
   subline: (
     <>
-      I&apos;m Franklin — a backend-focused full stack dev building fintech, SaaS, and automation systems.
-      <br /> Django by day, DevOps by night. Deploying in between.
+      I&apos;m Franklin — a full stack dev building fintech, SaaS, and automation systems end-to-end.
+      <br /> React in the morning, Django/NestJS at night. Deploying in between.
     </>
   ),
 };
@@ -98,9 +114,10 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Franklin is a backend-focused Full Stack Developer with 3+ years of experience building and deploying
-        production-grade fintech, SaaS, and automation systems. Strong background in cloud
-        infrastructure, API integrations, and workflow automation with proven ability to ship end-to-end products.
+        Franklin is a Full Stack Developer with 3+ years of experience building and deploying
+        production-grade fintech, SaaS, and automation systems. Equally comfortable crafting
+        polished React interfaces and architecting robust backend services, with a strong foundation
+        in cloud infrastructure and DevOps.
       </>
     ),
   },
@@ -272,4 +289,11 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const resume = {
+  path: "/resume",
+  label: "Resume",
+  title: `Resume – ${person.name}`,
+  description: `View and download ${person.name}'s resume`,
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, resume };
