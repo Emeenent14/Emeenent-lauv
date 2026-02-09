@@ -1,0 +1,75 @@
+---
+title: "Relay — Cross-Platform MCP Server Management"
+publishedAt: "2025-09-20"
+summary: "A cross-platform desktop application for MCP Server Management built with Tauri (Rust) and React, featuring SQLite persistence and seamless IPC communication."
+images:
+  - "/images/projects/project-01/cover-03.jpg"
+team:
+  - name: "Franklin Oguejiofor"
+    role: "Full Stack Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/chukwuemeka-franklin-54a02334b/"
+link: "https://relay-roan.vercel.app/"
+---
+
+## Overview
+
+Relay is a cross-platform desktop application designed for managing MCP (Model Context Protocol) servers. Built with Tauri and React, it provides a native experience across Windows, macOS, and Linux while maintaining a small footprint and high performance.
+
+> **🔗 Live Demo:** [relay-roan.vercel.app](https://relay-roan.vercel.app/)
+> 
+> **📂 Source Code:** [github.com/Emeenent14/relay](https://github.com/Emeenent14/relay)
+
+---
+
+## Key Features
+
+- **Cross-Platform Support** → Native apps for Windows, macOS, and Linux
+- **SQLite Persistence** → Local database for reliable data storage
+- **Full CRUD Operations** → Complete server management capabilities
+- **IPC Communication** → Seamless frontend-backend communication via Tauri
+- **Lightweight** → Small binary size with minimal resource usage
+
+---
+
+## Technical Implementation
+
+### Rust Backend (Tauri)
+- Built IPC communication layer between frontend and Rust backend
+- Implemented SQLite database with full CRUD operations
+- Leveraged Rust's memory safety for reliable server management
+
+### React Frontend
+- Modern React with TypeScript for type safety
+- Clean, intuitive UI for server configuration
+- Real-time status updates and server monitoring
+
+---
+
+## Technologies Used
+
+- **Rust**: Systems programming for the backend core
+- **Tauri**: Cross-platform desktop framework
+- **React** + **TypeScript**: Frontend interface
+- **SQLite**: Embedded database for local persistence
+- **IPC**: Inter-process communication for frontend-backend bridge
+
+---
+
+## Architecture Highlights
+
+- **Security First**: Tauri's security model limits frontend access to only exposed APIs
+- **Performance**: Rust's zero-cost abstractions ensure minimal overhead
+- **Offline Ready**: SQLite persistence allows full functionality without network
+
+---
+
+## Why Tauri?
+
+Tauri offers significant advantages over Electron:
+- **Smaller binary sizes** (10-20MB vs 150MB+)
+- **Lower memory footprint**
+- **Better security model**
+- **Native OS integration**
+
+This makes Relay fast, secure, and efficient across all platforms.

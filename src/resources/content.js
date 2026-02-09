@@ -2,14 +2,14 @@ import { Logo } from "@once-ui-system/core";
 
 
 const person = {
-  firstName: "Emeenent",
-  lastName: "(Chukwuemeka)",
+  firstName: "Franklin",
+  lastName: "Oguejiofor",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Full Stack Developer",
+  role: "Backend-focused Full Stack Developer",
   avatar: "/images/avatar.jpg",
-  email: "emeenent14@gmail.com",
+  email: "foguejiofor14@gmail.com",
   location: "Africa/Lagos", // IANA time zone format
   languages: ["English", "Igbo"],
 };
@@ -19,7 +19,7 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
-      I write about web development, AI, and engineering insights—sharing deep dives, breakdowns, and forward-thinking tech trends.
+      I write about backend engineering, DevOps, cloud infrastructure, and building production systems—sharing deep dives and real-world engineering insights.
     </>
   ),
 };
@@ -43,12 +43,17 @@ const social = [
   {
     name: "WhatsApp",
     icon: "whatsapp",
-    link: "https://wa.me/2347069273822",
+    link: "https://wa.me/2349066507858",
   },
   {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
+  },
+  {
+    name: "Resume",
+    icon: "document",
+    link: "/resume.html",
   },
 ];
 
@@ -58,16 +63,16 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building the future with code and bold ideas</>,
+  headline: <>Shipping production systems from backend to cloud</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">SafeSwap</strong></>,
+    title: <>Recent project: <strong className="ml-4">E-Tax Platform</strong></>,
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I&apos;m Emeenent — a full stack dev engineering modern apps from front to back.  
-      <br /> React in the morning, Python at night. Coffee in between.
+      I&apos;m Franklin — a backend-focused full stack dev building fintech, SaaS, and automation systems.
+      <br /> Django by day, DevOps by night. Deploying in between.
     </>
   ),
 };
@@ -93,8 +98,9 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Emeenent is a full stack developer passionate about crafting seamless user experiences,
-        scalable systems, and pushing the edges of modern web and AI technologies.
+        Franklin is a backend-focused Full Stack Developer with 3+ years of experience building and deploying
+        production-grade fintech, SaaS, and automation systems. Strong background in cloud
+        infrastructure, API integrations, and workflow automation with proven ability to ship end-to-end products.
       </>
     ),
   },
@@ -103,22 +109,35 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "EMT Ng",
-        timeframe: "2022 – Present",
-        role: "Full Stack Developer",
+        company: "OH-Res",
+        timeframe: "Nov 2025 – Present",
+        role: "Backend & DevOps Engineer",
         achievements: [
-          <>Built and maintained a scalable platform serving over 10,000 users daily.</>,
-          <>Increased backend performance by 30% through deep optimization and refactoring.</>,
+          <>Principal engineer across EDI Solution (www.oh-res.com) and E-Tax Platform (etax.oh-res.com).</>,
+          <>Designed and deployed complete AWS EC2 production infrastructure serving 100+ active users.</>,
+          <>Built backend services with Django, NestJS, and Express handling authentication, payments, and tax automation.</>,
+          <>Containerized services with Docker and implemented CI/CD pipelines, reducing deployment time by ~60%.</>,
         ],
         images: [],
       },
       {
-        company: "VVT Technologies",
-        timeframe: "2018 – 2022",
-        role: "Frontend Developer",
+        company: "SafeSwap",
+        timeframe: "Oct 2024 – Jul 2025",
+        role: "Founder / Full Stack Developer",
         achievements: [
-          <>Created a unified design system across products, boosting UI/UX consistency by 40%.</>,
-          <>Led cross-functional dev efforts, contributing to a 15% revenue uplift.</>,
+          <>Built and launched an escrow-based fintech platform using Next.js, Django, Celery, and PostgreSQL.</>,
+          <>Integrated Flutterwave for payments and Dojah for identity verification.</>,
+          <>Acquired 25+ real users and processed live transactions before shutdown due to regulatory constraints.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Upwork",
+        timeframe: "Dec 2021 – Aug 2023",
+        role: "Freelance Frontend Developer",
+        achievements: [
+          <>Built responsive web interfaces for small businesses using React and Tailwind CSS.</>,
+          <>Developed landing pages, dashboards, and e-commerce interfaces optimized for performance.</>,
         ],
         images: [],
       },
@@ -129,16 +148,12 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Nigeria Nsukka",
-        description: <>B.Eng. in Electronic and Computer Engineering (ECE)</>,
+        name: "University of Nigeria, Nsukka",
+        description: <>B.Eng. Electronics & Computer Engineering (2024 – 2029)</>,
       },
       {
-        name: "YouTube High",
-        description: <>Self-taught full stack development across modern stacks</>,
-      },
-      {
-        name: "ALX Africa",
-        description: <>Completed hands-on Python engineering track</>,
+        name: "Self-Taught Engineering",
+        description: <>Full stack development, DevOps, and cloud infrastructure across modern stacks</>,
       },
     ],
   },
@@ -148,53 +163,46 @@ const about = {
     skills: [
       {
         title: "Languages",
-        description: <>Proficient in full stack development with strong frontend-backend fluency</>,
+        description: <>TypeScript, JavaScript, Python, and Rust for systems-level programming</>,
         images: [
-          { src: "/images/projects/project-01/HTML.svg", width: 3, height: 3, alt: "HTML" },
-          { src: "/images/projects/project-01/css.svg", width: 3, height: 3, alt: "CSS" },
+          { src: "/images/projects/project-01/typescript.svg", width: 3, height: 3, alt: "TypeScript" },
           { src: "/images/projects/project-01/javascript.svg", width: 3, height: 3, alt: "JavaScript" },
           { src: "/images/projects/project-01/python.svg", width: 3, height: 3, alt: "Python" },
-          { src: "/images/projects/project-01/typescript.svg", width: 3, height: 3, alt: "TypeScript" },
+        ],
+      },
+      {
+        title: "Backend Frameworks",
+        description: <>Building robust APIs and services with Django, DRF, NestJS, and Express</>,
+        images: [
+          { src: "/images/projects/project-01/django.png", width: 3, height: 3, alt: "Django" },
+          { src: "/images/projects/project-01/drf.png", width: 3, height: 3, alt: "DRF" },
+          { src: "/images/projects/project-01/nodejs-icon.svg", width: 3, height: 3, alt: "Node.js" },
         ],
       },
       {
         title: "Frontend",
-        description: <>Building rich, reactive UIs with React,Next.js,Tailwind, Once UI, and modern tools</>,
+        description: <>React and Next.js for building complete, user-facing systems</>,
         images: [
           { src: "/images/projects/project-01/react.svg", width: 3, height: 3, alt: "React" },
           { src: "/images/projects/project-01/next.svg", width: 3, height: 3, alt: "Next.js" },
-          { src: "/images/projects/project-01/redux.svg", width: 3, height: 3, alt: "Redux" },
-          { src: "/images/projects/project-01/react-native.svg", width: 3, height: 3, alt: "React Native" },
           { src: "/images/projects/project-01/tailwind-css-2.svg", width: 3, height: 3, alt: "Tailwind CSS" },
         ],
       },
       {
-        title: "Backend",
-        description: <>Efficient APIs and systems built with Django, DRF, and Node.js</>,
-        images: [
-          { src: "/images/projects/project-01/django.png", width: 3, height: 3, alt: "Django" },
-          { src: "/images/projects/project-01/nodejs-icon.svg", width: 3, height: 3, alt: "Node.js" },
-          { src: "/images/projects/project-01/next.svg", width: 3, height: 3, alt: "Next.js" },
-          { src: "/images/projects/project-01/drf.png", width: 3, height: 3, alt: "DRF" },
-        ],
-      },
-      {
         title: "Databases",
-        description: <>Structured and scalable data modeling with SQL and NoSQL tools</>,
+        description: <>PostgreSQL, MongoDB, SQLite, and cloud storage with AWS S3</>,
         images: [
-          { src: "/images/projects/project-01/sql.svg", width: 3, height: 3, alt: "SQL" },
           { src: "/images/projects/project-01/poostgresql.png", width: 3, height: 3, alt: "PostgreSQL" },
           { src: "/images/projects/project-01/firebase.svg", width: 3, height: 3, alt: "Firebase" },
         ],
       },
       {
-        title: "Tools & Deployment",
-        description: <>Version control, testing, and smooth deployment pipelines</>,
+        title: "DevOps & Cloud",
+        description: <>AWS (EC2, ECS), Docker, GitHub Actions, Nginx, and CI/CD pipelines</>,
         images: [
           { src: "/images/projects/project-01/github.svg", width: 3, height: 3, alt: "GitHub" },
           { src: "/images/projects/project-01/postman.svg", width: 3, height: 3, alt: "Postman" },
           { src: "/images/projects/project-01/visual-studio-code.svg", width: 3, height: 3, alt: "VS Code" },
-          { src: "/images/projects/project-01/css.svg", width: 3, height: 3, alt: "CSS" },
         ],
       },
     ],

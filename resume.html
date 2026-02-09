@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franklin Oguejiofor - Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #111827;
+            --secondary: #374151;
+            --accent: #2563eb;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background-color: var(--bg);
+            font-size: 14px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-content h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.025em;
+            margin-bottom: 4px;
+        }
+
+        .header-content h2 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-links {
+            text-align: right;
+            font-size: 13px;
+        }
+
+        .header-links div {
+            margin-bottom: 4px;
+        }
+
+        /* Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Experience & Projects */
+        .job-item,
+        .project-item {
+            margin-bottom: 20px;
+        }
+
+        .job-header,
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .project-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .company-name {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .date {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .job-description,
+        .project-description {
+            font-size: 13.5px;
+            color: #374151;
+        }
+
+        .job-description ul,
+        .project-description ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .job-description li,
+        .project-description li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 4px;
+        }
+
+        .job-description li::before,
+        .project-description li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 6px;
+            font-family: monospace;
+        }
+
+        /* Sidebar Items */
+        .skill-category {
+            margin-bottom: 16px;
+        }
+
+        .skill-category h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--secondary);
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 16px;
+        }
+
+        .education-degree {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .education-school {
+            font-size: 13px;
+            color: var(--secondary);
+        }
+
+        /* Achievements */
+        .achievements-list li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 6px;
+            font-size: 13.5px;
+        }
+
+        .achievements-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        /* Links in Sidebar */
+        .sidebar-link {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        .live-link {
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .live-link a {
+            color: var(--accent);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .live-link a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            a {
+                text-decoration: underline;
+                color: var(--accent);
+            }
+
+            h3 {
+                border-bottom: 1px solid #000;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Franklin Oguejiofor</h1>
+                <h2>Backend-focused Full Stack Developer</h2>
+                <div class="contact-info">
+                    <span class="contact-item">Nsukka, Nigeria</span>
+                    <span class="contact-item">•</span>
+                    <a href="mailto:foguejiofor14@gmail.com" class="contact-item">foguejiofor14@gmail.com</a>
+                    <span class="contact-item">•</span>
+                    <a href="mailto:foguejiofor@oh-res.com" class="contact-item">foguejiofor@oh-res.com</a>
+                    <span class="contact-item">•</span>
+                    <span class="contact-item">+234 906 650 7858</span>
+                </div>
+            </div>
+            <div class="header-links">
+                <div><a href="https://github.com/Emeenent14" target="_blank">github.com/Emeenent14</a></div>
+                <div><a href="https://emeenent-lauv.vercel.app" target="_blank">emeenent-lauv.vercel.app</a></div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Main Column (Left) -->
+            <div class="main-column">
+
+                <section>
+                    <h3>Professional Summary</h3>
+                    <p class="job-description">
+                        Backend-focused Full Stack Developer with 3+ years of experience building and deploying
+                        production-grade fintech, SaaS, and automation systems. Strong background in cloud
+                        infrastructure, API integrations, and workflow automation with proven ability to ship end-to-end
+                        products. Frontend experience in React and Next.js serves as a complementary strength for
+                        building complete, user-facing systems.
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Professional Experience</h3>
+
+                    <div class="job-item">
+                        <div class="job-header">
+                            <span class="job-title">Backend & DevOps Engineer</span>
+                            <span class="date">Nov 2025 – Present</span>
+                        </div>
+                        <div class="company-name">OH-Res</div>
+                        <div class="live-link"><a href="https://www.oh-res.com/" target="_blank">🔗 Live:
+                                www.oh-res.com</a></div>
+                        <div class="job-description">
+                            <p style="margin-bottom: 6px; font-style: italic;">Principal engineer across two production
+                                systems: <strong>EDI Solution</strong> (www.oh-res.com) and <strong>E-Tax
+                                    Platform</strong> (etax.oh-res.com).</p>
+                            <ul>
+                                <li>Designed and deployed complete AWS EC2 production infrastructure serving 100+ active
+                                    users for the E-Tax Platform.</li>
+                                <li>Built backend services with Django, NestJS, and Express handling authentication,
+                                    payments, and tax automation workflows.</li>
+                                <li>Containerized services with Docker and implemented CI/CD pipelines with GitHub
+                                    Actions, reducing deployment time by ~60%.</li>
+                                <li>Automated end-user tax filing workflows using n8n, eliminating manual processing for
+                                    core operations.</li>
+                                <li>Integrated multiple third-party services including Government VAT portal, Remita,
+                                    and Dojah.</li>
+                                <li>Developed backend APIs for EDI Solution, implementing secure data processing
+                                    pipelines.</li>
+                            </ul>
+                            <p style="margin-top: 8px; font-size: 13px; color: var(--text-light);">
+                                <strong>Reference:</strong> Oulwafemi Hughes (Manager) • <a
+                                    href="mailto:ohughes@oh-res.com">ohughes@oh-res.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="job-item">
+                        <div class="job-header">
+                            <span class="job-title">Founder / Full Stack Developer</span>
+                            <span class="date">Oct 2024 – July 2025</span>
+                        </div>
+                        <div class="company-name">SafeSwap</div>
+                        <div class="live-link"><a href="https://safeswap-web.vercel.app/" target="_blank">🔗 Live:
+                                safeswap-web.vercel.app</a></div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Built and launched an escrow-based fintech platform from scratch using Next.js,
+                                    Django, Celery, and PostgreSQL.</li>
+                                <li>Integrated Flutterwave for payments and Dojah for identity verification.</li>
+                                <li>Built transaction workflows, user authentication, and background job processing.
+                                </li>
+                                <li>Acquired 25+ real users and processed live transactions before shutdown due to
+                                    regulatory constraints.</li>
+                            </ul>
+                            <p style="margin-top: 8px; font-size: 13px; color: var(--text-light);">
+                                <strong>Reference:</strong> Omoha Daniel (Co-founder) • +234 810 182 8624 • <a
+                                    href="mailto:danielomoha29@gmail.com">danielomoha29@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="job-item">
+                        <div class="job-header">
+                            <span class="job-title">Freelance Frontend Developer</span>
+                            <span class="date">Dec 2021 – Aug 2023</span>
+                        </div>
+                        <div class="company-name">Upwork</div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Built responsive web interfaces for small businesses using React and Tailwind CSS.
+                                </li>
+                                <li>Developed landing pages, dashboards, and e-commerce interfaces optimized for
+                                    performance and usability.</li>
+                                <li>Collaborated directly with clients to translate business requirements into
+                                    functional UI solutions.</li>
+                            </ul>
+                            <p style="margin-top: 8px; font-size: 13px; color: var(--text-light);">
+                                <strong>Reference:</strong> Oluchi Jessica (Client) • +234 813 897 6522
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Selected Projects</h3>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-title">LeaseLog</span>
+                        </div>
+                        <div class="live-link"><a href="https://leaselog-lac.vercel.app/" target="_blank">🔗 Live:
+                                leaselog-lac.vercel.app</a></div>
+                        <div class="live-link"><a href="https://github.com/Emeenent14/leaselog-f" target="_blank">🔗
+                                Code:
+                                github.com/Emeenent14/leaselog-f</a></div>
+                        <div class="project-description">
+                            Property Management & Accounting Platform for landlords with tenant management and lease
+                            tracking.
+                            <ul>
+                                <li>Implemented JWT authentication and API documentation with Swagger.</li>
+                                <li>Designed scalable modular backend architecture.</li>
+                            </ul>
+                            <div class="tech-stack">Stack: Django, DRF, PostgreSQL, Next.js, TypeScript</div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-title">Relay</span>
+                        </div>
+                        <div class="live-link"><a href="https://relay-roan.vercel.app/" target="_blank">🔗 Live:
+                                relay-roan.vercel.app</a></div>
+                        <div class="live-link"><a href="https://github.com/Emeenent14/relay" target="_blank">🔗 Code:
+                                github.com/Emeenent14/relay</a></div>
+                        <div class="project-description">
+                            Cross-platform desktop app for MCP Server Management using Tauri (Rust) and React.
+                            <ul>
+                                <li>Implemented SQLite persistence and full CRUD system.</li>
+                                <li>Built IPC communication between frontend and Rust backend.</li>
+                            </ul>
+                            <div class="tech-stack">Stack: Rust, Tauri, React, TypeScript, SQLite</div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-title">Conduit</span>
+                        </div>
+                        <div class="live-link"><a href="https://conduit-web-242w.vercel.app/" target="_blank">🔗 Live:
+                                conduit-web-242w.vercel.app</a></div>
+                        <div class="project-description">
+                            Automation platform on top of n8n for non-technical users.
+                            <ul>
+                                <li>Developed backend APIs and Dockerized infrastructure (Postgres, Redis, n8n).</li>
+                                <li>Implemented template catalog and credential management.</li>
+                            </ul>
+                            <div class="tech-stack">Stack: Next.js, Express, TypeScript, Docker, n8n</div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-title">Winkler RF Predictor</span>
+                        </div>
+                        <div class="live-link"><a href="https://github.com/Emeenent14/winkler-rf-predictor"
+                                target="_blank">🔗 Source: github.com/Emeenent14/winkler-rf-predictor</a></div>
+                        <div class="project-description">
+                            Machine Learning Project predicting beam deflection.
+                            <ul>
+                                <li>Built Random Forest model achieving ~0.85 R² score.</li>
+                                <li>Delivered full ML pipeline: data processing, training, evaluation.</li>
+                            </ul>
+                            <div class="tech-stack">Stack: Python, scikit-learn, pandas, matplotlib</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar (Right) -->
+            <aside>
+                <section>
+                    <h3>Technical Skills</h3>
+
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Rust</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Frameworks</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">DRF</span>
+                            <span class="skill-tag">NestJS</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">React</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Databases</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag">AWS S3</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>DevOps & Cloud</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">AWS (EC2, ECS)</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">Nginx</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Tools & APIs</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">n8n</span>
+                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">Postman</span>
+                            <span class="skill-tag">Prisma</span>
+                            <span class="skill-tag">Fintech APIs</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Education</h3>
+                    <div class="education-item">
+                        <div class="education-degree">B.Eng. Electronics & Computer Engineering</div>
+                        <div class="education-school">University of Nigeria, Nsukka</div>
+                        <div class="date">2024 – 2029</div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Achievements</h3>
+                    <ul class="achievements-list" style="list-style: none;">
+                        <li>Designed and deployed multiple production systems.</li>
+                        <li>Founded and launched a fintech startup with live customers.</li>
+                        <li>Built full CI/CD infrastructure for enterprise tax platform.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Soft Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">System Design</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Ownership</span>
+                        <span class="skill-tag">Collaboration</span>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+
+</body>
+
+</html>
