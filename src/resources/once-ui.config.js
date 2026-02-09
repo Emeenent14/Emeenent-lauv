@@ -174,7 +174,7 @@ const mailchimp = {
 
 // default schema data - Person schema for SEO
 const schema = {
-  logo: "/images/avatar.jpg",
+  logo: "/images/me.jpg",
   type: "Person",
   name: "Franklin Oguejiofor",
   alternateName: [

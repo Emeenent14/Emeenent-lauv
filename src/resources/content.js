@@ -8,7 +8,7 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Full Stack Developer",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/me.jpg",
   email: "foguejiofor14@gmail.com",
   location: "Africa/Lagos", // IANA time zone format
   languages: ["English", "Igbo"],
